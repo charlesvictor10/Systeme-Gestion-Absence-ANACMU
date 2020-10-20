@@ -1,0 +1,87 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+    Page de modification du solde des congés d'un agent
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
+    <li><a href="#">Etats</a></li>
+    <li class="active">Solde des congés</li>
+  </ol>
+</section>
+
+<!-- Main content -->
+<section class="content" *ngIf="soldeConge">
+  <div class="box box-default">
+    <div class="box-header with-border">
+      <h3 class="box-title">Agent: {{soldeConge.agent.matricule}} / {{soldeConge.agent.prenom}} {{soldeConge.agent.nom}} / {{soldeConge.agent.fonction.lib}}</h3>
+      <div class="box-tools pull-right">
+        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+      </div>
+    </div>
+    <div class="box-body">
+      <div class="col-md-6">
+        <div class="box-footer no-padding">
+          <ul class="nav nav-stacked">
+            <li><a>Date d'entrée en service <span class="pull-right">{{soldeConge.agent.datePriseFonction|date:'dd/MM/yyyy'}}</span></a></li>
+            <li><a>Bureau <span class="pull-right">{{soldeConge.agent.entite.lib}}</span></a></li>
+            <li><a>Service <span class="pull-right">{{soldeConge.agent.service.lib}}</span></a></li>
+            <li><a>Superviseur <span class="pull-right">{{soldeConge.agent.superviseur.prenom}} {{soldeConge.agent.superviseur.nom}}</span></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="box-footer no-padding">
+          <ul class="nav nav-stacked">
+            <li><a>N° poste / Fixe bureau <span class="pull-right">{{soldeConge.agent.numeroPoste}} {{soldeConge.agent.telBureau}}</span></a></li>
+            <li><a>Tel. eGov (ADIE) <span class="pull-right">{{soldeConge.agent.telProfessionnel}}</span></a></li>
+            <li><a>Email Professionnel <span class="pull-right">{{soldeConge.agent.emailProfessionnel}}</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="box box-default">
+    <div class="box-header with-border">
+      <h3 class="box-title">Modification du solde des congés d'un agent</h3>
+      <div class="box-tools pull-right">
+        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+      </div>
+    </div>
+
+    <!-- /.box-header -->
+    <div class="box-body">
+      <form #f="ngForm" (ngSubmit)="updateSoldeConge(f.value)">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group" style="margin-bottom: 10px;">
+              <label class="label-info" style="height: 35px; font-size: 18px; width: 500px;">Nombre congés acquis</label>
+            </div>
+            <div class="form-group" style="margin-bottom: 10px;">
+              <label class="label-info" style="height: 35px; font-size: 18px; width: 500px;">Nombre jour déjà pris</label>
+            </div>
+            <div class="form-group" style="margin-bottom: 10px;">
+              <label class="label-info" style="height: 35px; font-size: 18px; width: 500px;">Nombre congés supplémentaire</label>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <input type="number" class="form-control" name="nbCongesAcquis" [(ngModel)]="soldeConge.nbCongesAcquis">
+            </div>
+            <div class="form-group">
+              <input type="number" class="form-control" name="nbJourDejaPris" [(ngModel)]="soldeConge.nbJourPris">
+            </div>
+            <div class="form-group">
+              <input type="number" class="form-control" name="nbCongesSupplementaire" [(ngModel)]="soldeConge.nbCongesSupplementaire">
+            </div>
+            <input type="text" class="hidden" name="id" [(ngModel)]="soldeConge.id">
+          </div>
+        </div>
+        <div class="box-footer">
+          <button type="submit" class="btn btn-primary">Enregistrer</button>
+          <button type="reset" class="btn btn-danger pull-right" (click)="close()">Annuler</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

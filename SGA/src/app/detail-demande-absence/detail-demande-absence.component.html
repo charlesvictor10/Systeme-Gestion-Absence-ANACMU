@@ -1,0 +1,44 @@
+<section class="content-header">
+  <h1>
+    Page d'affichage des informations d'une demande d'absence
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
+    <li><a href="#">Demandes</a></li>
+    <li class="active">Demandes de permissions</li>
+  </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+  <!-- SELECT2 EXAMPLE -->
+  <div class="box box-default">
+    <div class="box-header with-border">
+      <h3 class="box-title">Détails de la demande d'absence</h3>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body" *ngIf="demande">
+      <div class="row">
+        <div class="box-body">
+          <div class="box-footer no-padding">
+            <ul class="nav nav-stacked">
+              <li><a>N° demande <span class="pull-right badge bg-aqua">{{demande.id}}</span></a></li>
+              <li><a>Agent <span class="pull-right badge bg-aqua">{{demande.absence.agent.prenom}} {{demande.absence.agent.nom}}</span></a></li>
+              <li><a>Type d'absence <span class="pull-right badge bg-aqua">{{demande.absence.typeAbsence.lib}}</span></a></li>
+              <li><a>Date demande <span class="pull-right badge bg-aqua">{{demande.dateDemande|date:'dd/MM/yyyy'}}</span></a></li>
+              <li><a>Période <span class="pull-right badge bg-aqua">{{demande.absence.dateDebutAbsence|date:'dd/MM/yyyy'}} / {{demande.absence.dateFinAbsence|date:'dd/MM/yyyy'}}</span></a></li>
+              <li><a>Durée <span class="pull-right badge bg-aqua">{{demande.absence.nbJourAbsence}} jour(s)</span></a></li>
+              <li><a>Nb. jour déductible <span class="pull-right badge bg-aqua">{{demande.absence.nbJourDeductible}}</span></a></li>
+              <li><a>Nb. jour non déductible <span class="pull-right badge bg-aqua">{{demande.absence.nbJourNonDeductible}}</span></a></li>
+              <li><a>Etat demande <span class="pull-right badge bg-aqua">{{demande.etatDemande}}</span></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="box-footer">
+        <button type="submit" class="btn btn-primary" (click)="editDemandeAbsence(demande.id)">Modifier</button>
+        <button type="reset" class="btn btn-danger pull-right" (click)="close()">Annuler</button>
+      </div>
+    </div>
+  </div>
+</section>

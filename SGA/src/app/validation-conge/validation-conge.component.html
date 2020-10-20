@@ -1,0 +1,56 @@
+<section class="content-header">
+  <h1>
+    Page des demandes de permission à valider définitivement
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
+    <li><a href="#">Demandes</a></li>
+    <li class="active">Demandes à valider définitivement</li>
+  </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box">
+        <div class="box-header">
+          <h3 class="box-title">Liste des demandes de congés à valider définitivement</h3>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <table id="example1" class="table table-bordered table-striped">
+            <thead>
+            <tr>
+              <th>N° demande</th>
+              <th>Agent</th>
+              <th>Type d'absence</th>
+              <th>Date demande</th>
+              <th>Période</th>
+              <th>Durée</th>
+              <th>Nb. jour déductible</th>
+              <th>Etat demande</th>
+              <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let demRH of demandesRH">
+              <td>{{demRH.id}}</td>
+              <td>{{demRH.absence.agent.prenom}} {{demRH.absence.agent.nom}}</td>
+              <td>{{demRH.absence.typeAbsence}}</td>
+              <td>{{demRH.dateDemande|date:'dd/MM/yyyy'}}</td>
+              <td>Du {{demRH.absence.dateDebutAbsence|date:'dd/MM/yyyy'}} <br> au {{demRH.absence.dateFinAbsence|date:'dd/MM/yyyy'}}</td>
+              <td>{{demRH.absence.nbJourAbsence}}</td>
+              <td>{{demRH.absence.nbJourDeductible}}</td>
+              <td>{{demRH.etatDemande}}</td>
+              <td>
+                <a (click)="goValid(demRH.id)" class="btn btn-success">Validation</a>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,56 @@
+<section class="content-header">
+  <h1>
+    Page des demandes de permission traitées
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
+    <li><a href="#">Demandes</a></li>
+    <li class="active">Demandes traitées</li>
+  </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box">
+        <div class="box-header">
+          <h3 class="box-title">Liste des demandes de permission traitées</h3>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <table id="example1" class="table table-bordered table-striped">
+            <thead>
+            <tr>
+              <th>N° demande</th>
+              <th>Agent</th>
+              <th>Service</th>
+              <th>Date demande</th>
+              <th>Date début</th>
+              <th>Date fin</th>
+              <th>Nb. jours d'absence</th>
+              <th>Etat demande</th>
+              <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let demande of demandes">
+                <td>{{demande.id}}</td>
+                <td>{{demande.absence.agent.prenom}} {{demande.absence.agent.nom}}</td>
+                <td>{{demande.absence.agent.service.lib}}</td>
+                <td>{{demande.dateDemande|date:'dd/MM/yyyy'}}</td>
+                <td>{{demande.absence.dateDebutAbsence|date:'dd/MM/yyyy'}}</td>
+                <td>{{demande.absence.dateFinAbsence|date:'dd/MM/yyyy'}}</td>
+                <td>{{demande.absence.nbJourAbsence}}</td>
+                <td>{{demande.etatDemande}}</td>
+                <td>
+                  <a (click)="detail(demande.id)" class="clickable"><span class="glyphicon glyphicon-info-sign"></span></a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

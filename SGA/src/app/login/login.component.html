@@ -1,0 +1,48 @@
+<div class="login-box">
+  <div class="login-logo">
+    <a href="#"><b>SGA</b> 2.0</a>
+  </div>
+  <!-- /.login-logo -->
+  <div class="login-box-body">
+    <p class="login-box-msg">Veuillez vous authentifier</p>
+
+    <form #f="ngForm" (ngSubmit)="f.form.valid && onLogin(f.value)" novalidate>
+      <div *ngIf="f.submitted && errorMessage" class="alert alert-danger">{{errorMessage}}</div>
+      <div class="form-group has-feedback">
+        <input type="email" class="form-control" name="email" [(ngModel)]="utilisateur.email" #email="ngModel" placeholder="Email professionnel" [ngClass]="{ 'is-invalid': f.submitted && email.invalid }" required/>
+        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        <div *ngIf="f.submitted && email.invalid" class="text-danger">
+          <div *ngIf="email.errors.required">Adresse email obligatoire</div>
+        </div>
+      </div>
+      <div class="form-group has-feedback">
+        <input type="password" class="form-control" name="password" [(ngModel)]="utilisateur.password" #password="ngModel" placeholder="Mot de passe" [ngClass]="{ 'is-invalid': f.submitted && password.invalid }" required/>
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        <div *ngIf="f.submitted && password.invalid" class="text-danger">
+          <div *ngIf="password.errors.required">Mot de passe obligatoire</div>
+        </div>
+      </div>
+      <div class="row">
+        <!-- /.col -->
+        <div class="col-xs-6 col-xs-offset-3">
+          <button type="submit" class="btn btn-primary btn-block btn-flat">Se connecter</button>
+        </div>
+        <!-- /.col -->
+      </div>
+    </form>
+
+    <div class="social-auth-links text-center">
+      <p>- OR -</p>
+      <a (click)="goToFacebookUrl()" class="btn btn-block btn-social btn-facebook btn-flat">
+        <i class="fa fa-facebook"></i> Connectez vous avec Facebook
+      </a>
+      <a (click)="goToGoogleUrl()" class="btn btn-block btn-social btn-google btn-flat">
+        <i class="fa fa-google-plus"></i> Connectez vous avec Google
+      </a>
+    </div>
+    <!-- /.social-auth-links -->
+    <a (click)="open()" class="text-danger text-bold clickable">Vous avez oublié votre mot de passe?</a><br>
+  </div>
+  <!-- /.login-box-body -->
+</div>
+

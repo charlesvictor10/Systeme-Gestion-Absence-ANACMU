@@ -1,0 +1,234 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+    Page de modification d'un agent
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
+    <li><a href="#">Paramétrage</a></li>
+    <li class="active">Personnel</li>
+  </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+  <!-- SELECT2 EXAMPLE -->
+  <div class="box box-default">
+    <div class="box-header with-border">
+      <h3 class="box-title">Modification d'un agent</h3>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+      <form #f="ngForm" (ngSubmit)="updateAgent(f.value)">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="box box-info">
+              <div class="box-header with-border">
+                <h3 class="box-title">Données Personnelles</h3>
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                </div>
+              </div>
+              <div class="box-body">
+                <div class="form-group">
+                  <div class="control-label">Titre</div>
+                  <select class="form-control select2" style="width: 100%;" name="civilite" [(ngModel)]="currentCivilite">
+                    <option *ngFor="let civilite of civilites; let i = index" [ngValue]="civilites[i]">
+                      {{civilite.lib}}
+                    </option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <div class="control-label">Prénom</div>
+                  <input class="form-control" type="text" name="prenom" [(ngModel)]="agent.prenom">
+                </div>
+                <div class="form-group">
+                  <div class="control-label">Nom</div>
+                  <input class="form-control" type="text" name="nom" [(ngModel)]="agent.nom">
+                </div>
+                <div class="form-group">
+                  <div class="control-label">Nom jeune fille</div>
+                  <input class="form-control" type="text" name="nomJeuneFille" [(ngModel)]="agent.nomJeuneFille">
+                </div>
+                <div class="form-group">
+                  <div class="control-label">Surnom</div>
+                  <input class="form-control" type="text" name="surnomSigle" [(ngModel)]="agent.surnomSigle">
+                </div>
+                <div class="form-group">
+                  <div class="pretty p-icon p-round">
+                    <input type="radio" name="genre" value="Homme" [(ngModel)]="agent.genre">
+                    <div class="state p-success">
+                      <i class="icon mdi mdi-check"></i>
+                      <label>Homme</label>
+                    </div>
+                  </div>
+                  <div class="pretty p-icon p-round">
+                    <input type="radio" name="genre" value="Femme" [(ngModel)]="agent.genre">
+                    <div class="state p-warning">
+                      <i class="icon mdi mdi-check"></i>
+                      <label>Femme</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="control-label">Statut Marital</div>
+                  <select class="form-control select2" style="width: 100%;" name="statut" [(ngModel)]="currentStatut">
+                    <option *ngFor="let statut of statuts; let i = index" [ngValue]="statuts[i]">
+                      {{statut.lib}}
+                    </option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <div class="control-label">N° CNI</div>
+                  <input class="form-control" type="text" name="cni" [(ngModel)]="agent.cni">
+                </div>
+                <div class="form-group">
+                  <div class="control-label">Date de naissance</div>
+                  <div class="input-group date">
+                    <div class="input-group-addon">
+                      <i class="fa fa-calendar"></i>
+                    </div>
+                    <input type="date" class="form-control pull-right" id="datepicker" name="dateNaissance" [(ngModel)]="agent.dateNaissance">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="control-label">Lieu de naissance</div>
+                  <input class="form-control" type="text" name="lieuNaissance" [(ngModel)]="agent.lieuNaissance">
+                </div>
+                <div class="form-group">
+                  <input class="hidden" type="text" name="id" [(ngModel)]="agent.id">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="box box-info">
+              <div class="box-header with-border">
+                <h3 class="box-title">Données Professionnelles</h3>
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                </div>
+              </div>
+              <div class="box-body">
+                <div class="form-group">
+                  <div class="control-label">Bureau</div>
+                  <select class="form-control select2" style="width: 100%;" name="entite" [(ngModel)]="currentEntite">
+                    <option *ngFor="let entite of entites; let i = index" [ngValue]="entites[i]">
+                      {{entite.lib}}
+                    </option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <div class="control-label">Service</div>
+                  <select class="form-control select2" style="width: 100%;" name="service" [(ngModel)]="currentService">
+                    <option *ngFor="let service of services; let i = index" [ngValue]="services[i]">
+                      {{service.lib}}
+                    </option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <div class="control-label">Fonction</div>
+                  <select class="form-control select2" style="width: 100%;" name="fonction" [(ngModel)]="currentFonction">
+                    <option *ngFor="let fonction of fonctions; let i = index" [ngValue]="fonctions[i]">
+                      {{fonction.lib}}
+                    </option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <div class="control-label">Superviseur</div>
+                  <select class="form-control select2" style="width: 100%;" name="superviseur" [(ngModel)]="currentSuperviseur">
+                    <option *ngFor="let superviseur of superviseurs; let i = index" [ngValue]="superviseurs[i]">
+                      {{superviseur.prenom}} {{superviseur.nom}}
+                    </option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <div class="control-label">Matricule</div>
+                  <input class="form-control" type="text" name="matricule" [(ngModel)]="agent.matricule">
+                </div>
+                <div class="form-group">
+                  <div class="control-label">Recruté(e) le</div>
+                  <div class="input-group date">
+                    <div class="input-group-addon">
+                      <i class="fa fa-calendar"></i>
+                    </div>
+                    <input class="form-control pull-right" type="date" name="dateRecrutement" [(ngModel)]="agent.dateRecrutement">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="control-label">A démarré le</div>
+                  <div class="input-group date">
+                    <div class="input-group-addon">
+                      <i class="fa fa-calendar"></i>
+                    </div>
+                    <input class="form-control pull-right" type="date" name="datePriseFonction" [(ngModel)]="agent.datePriseFonction">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="control-label">N° de poste</div>
+                  <input class="form-control" type="text" name="numeroPoste" [(ngModel)]="agent.numeroPoste">
+                </div>
+                <div class="form-group">
+                  <div class="control-label">Tél. Bureau</div>
+                  <input class="form-control" type="text" name="telBureau" [(ngModel)]="agent.telBureau">
+                </div>
+                <div class="form-group">
+                  <div class="control-label">Tél. ADIE</div>
+                  <input class="form-control" type="text" name="telProfessionnel" [(ngModel)]="agent.telProfessionnel">
+                </div>
+                <div class="form-group">
+                  <div class="control-label">Email Prof.</div>
+                  <input class="form-control" type="text" name="emailProfessionnel" [(ngModel)]="agent.emailProfessionnel">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="box box-info">
+              <div class="box-header with-border">
+                <h3 class="box-title">Coordonnées Personnelles</h3>
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                </div>
+              </div>
+              <div class="box-body">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <div class="control-label">Tél. personnel</div>
+                    <input class="form-control" type="text" name="tel1" [(ngModel)]="agent.tel1">
+                  </div>
+                  <div class="form-group">
+                    <div class="control-label">Tél. domicile</div>
+                    <input class="form-control" type="text" name="tel2" [(ngModel)]="agent.tel2">
+                  </div>
+                  <div class="form-group">
+                    <div class="control-label">Email personnel</div>
+                    <input class="form-control" type="text" name="email" [(ngModel)]="agent.email">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <div class="control-label">Adresse(1)</div>
+                    <input class="form-control" type="text" name="adresse1" [(ngModel)]="agent.adresse1">
+                  </div>
+                  <div class="form-group">
+                    <div class="control-label">Adresse(2)</div>
+                    <input class="form-control" type="text" name="adresse2" [(ngModel)]="agent.adresse2">
+                  </div>
+                  <div class="form-group">
+                    <div class="control-label">Adresse(3)</div>
+                    <input class="form-control" type="text" name="adresse3" [(ngModel)]="agent.adresse3">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="box-footer">
+          <button type="submit" class="btn btn-primary">Enregistrer</button>
+          <button type="reset" class="btn btn-danger pull-right">Annuler</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

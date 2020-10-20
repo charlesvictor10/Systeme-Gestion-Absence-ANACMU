@@ -1,0 +1,68 @@
+<section class="content-header">
+  <h1>
+    Page d'affichage des détails du solde des congés d'un agent
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
+    <li><a href="#">Etats</a></li>
+    <li class="active">Solde des congés</li>
+  </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+  <!-- SELECT2 EXAMPLE -->
+  <div class="box box-default">
+    <div class="box-header with-border">
+      <h3 class="box-title">Détails solde congé</h3>
+    </div>
+    <div class="box-body">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="box box-info">
+            <div class="box-header with-border">
+              <h3 class="box-title">Données Agent</h3>
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+              </div>
+            </div>
+            <div class="box-body">
+              <div class="box-footer no-padding">
+                <ul class="nav nav-stacked">
+                  <li><a>Matricule <span class="pull-right badge bg-aqua">{{soldeConge.agent.matricule}}</span></a></li>
+                  <li><a>Agent <span class="pull-right badge bg-aqua">{{soldeConge.agent.prenom}} {{soldeConge.agent.nom}}</span></a></li>
+                  <li><a>Genre <span class="pull-right badge bg-aqua">{{soldeConge.agent.genre}}</span></a></li>
+                  <li><a>Service <span class="pull-right badge bg-aqua">{{soldeConge.agent.service.lib}}</span></a></li>
+                  <li><a>Fonction <span class="pull-right badge bg-aqua">{{soldeConge.agent.fonction.lib}}</span></a></li>
+                  <li><a>Début <span class="pull-right badge bg-aqua">{{soldeConge.agent.datePriseFonction|date:'dd/MM/yyyy'}}</span></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="box box-info">
+            <div class="box-header with-border">
+              <h3 class="box-title">Solde congé</h3>
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+              </div>
+            </div>
+            <div class="box-body">
+              <div class="box-footer no-padding">
+                <ul class="nav nav-stacked">
+                  <li><a>Nb. congé acquis <span class="pull-right badge bg-aqua">{{soldeConge.nbCongesAcquis}}</span></a></li>
+                  <li><a>Nb. jour déjà pris <span class="pull-right badge bg-aqua">{{soldeConge.nbJourPris}}</span></a></li>
+                  <li><a>Nb. congé reliquat <span class="pull-right badge bg-aqua">{{soldeConge.nbCongesReliquat}}</span></a></li>
+                  <li><a>Nb. congé échus <span class="pull-right badge bg-aqua">{{soldeConge.nbCongesEchus}}</span></a></li>
+                  <li><a>Nb. congé en cours <span class="pull-right badge bg-aqua">{{soldeConge.nbCongesEncours}}</span></a></li>
+                  <li><a>Nb. congé supplémentaire <span class="pull-right badge bg-aqua">{{soldeConge.nbCongesSupplementaire}}</span></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

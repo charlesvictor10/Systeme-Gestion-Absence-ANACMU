@@ -1,0 +1,38 @@
+<section class="content-header">
+  <h1>
+    Page d'affichage des détails d'un jour férié
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
+    <li><a href="#">Paramétrage</a></li>
+    <li class="active">Jour Férié</li>
+  </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="box" *ngIf="jourFerie">
+        <div class="box-header">
+          <h3 class="box-title">Détails sur un jour férié</h3>
+        </div>
+        <div class="box-body">
+          <div class="box-footer no-padding">
+            <ul class="nav nav-stacked">
+              <li><a>Libellé <span class="pull-right badge bg-aqua">{{jourFerie.lib}}</span></a></li>
+              <li><a>Jour <span class="pull-right badge bg-aqua">{{jourFerie.jour|date:"dd/MM/yyyy"}}</span></a></li>
+              <li><a>Recurrent <span class="pull-right badge bg-aqua">{{jourFerie.estRecurrent}}</span></a></li>
+              <li><a>Fixe <span class="pull-right badge bg-aqua">{{jourFerie.estFixe}}</span></a></li>
+              <li><a>Année <span class="pull-right badge bg-aqua">{{jourFerie.annee.annee}}</span></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="box-footer">
+          <button type="submit" class="btn btn-primary" (click)="detailJourFerie(jourFerie.id)">Modifier</button>
+          <button type="reset" class="btn btn-danger pull-right" (click)="close()">Annuler</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

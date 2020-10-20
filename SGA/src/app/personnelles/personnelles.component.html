@@ -1,0 +1,111 @@
+<section class="content-header">
+  <h1>
+    Page d'affichage des données personnelles
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
+    <li><a href="#">Fiche Personnelle</a></li>
+    <li class="active">Données personnelles</li>
+  </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+  <!-- SELECT2 EXAMPLE -->
+  <div class="box box-default">
+    <div class="box-header with-border">
+      <h3 class="box-title">Affichage des données personnelles</h3>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="box box-info">
+            <div class="box-header with-border">
+              <h3 class="box-title">Article L.150 du code du travail</h3>
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+              </div>
+            </div>
+            <div class="box-body">
+              <p>Le droit de jouissance au congé est acquis après une période minimale de service effectif, appelée période de référence, égale à 12 mois.
+                Dans tous les cas, la jouissance effective du congé peut être reportée d'accord parties, sans que la durée de service effectif puisse excéder trois ans, et sous réserve d'un congé de six jours ouvrables à prendre obligatoirement chaque année.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="box box-info">
+            <div class="box-header with-border">
+              <h3 class="box-title">Informations sur l'agent</h3>
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+              </div>
+            </div>
+            <div class="box-body">
+              <div class="col-md-6">
+                <div class="box-footer no-padding">
+                  <ul class="nav nav-stacked">
+                    <li><a>Nom <span class="pull-right">{{utilisateur.agent.prenom}} {{utilisateur.agent.nom}}</span></a></li>
+                    <li><a>Entité <span class="pull-right">{{utilisateur.agent.entite.lib}}</span></a></li>
+                    <li><a>Date d'entrée en service <span class="pull-right">{{utilisateur.agent.datePriseFonction|date:'dd/MM/yyyy'}}</span></a></li>
+                    <li><a>Bureau <span class="pull-right"></span></a></li>
+                    <li><a>Service <span class="pull-right">{{utilisateur.agent.service.lib}}</span></a></li>
+                    <li><a>Superviseur <span class="pull-right">{{utilisateur.agent.superviseur.prenom}} {{utilisateur.agent.superviseur.nom}}</span></a></li>
+                    <li><a>N° poste / Fixe bureau <span class="pull-right">{{utilisateur.agent.numeroPoste}} / {{utilisateur.agent.telBureau}}</span></a></li>
+                    <li><a>Tél. eGov(ADIE) <span class="pull-right">{{utilisateur.agent.telProfessionnel}}</span></a></li>
+                    <li><a>Email professionnel <span class="pull-right">{{utilisateur.agent.emailProfessionnel}}</span></a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="box-footer no-padding">
+                  <ul class="nav nav-stacked">
+                    <li><a>Matricule <span class="pull-right">{{utilisateur.agent.matricule}}</span></a></li>
+                    <li><a>Fonction <span class="pull-right">{{utilisateur.agent.fonction.lib}}</span></a></li>
+                    <li><a>N° CNI <span class="pull-right">{{utilisateur.agent.cni}}</span></a></li>
+                    <li><a>Tél. personnel <span class="pull-right">{{utilisateur.agent.tel1}}</span></a></li>
+                    <li><a>Tél. domicile <span class="pull-right">{{utilisateur.agent.tel2}}</span></a></li>
+                    <li><a>Email personnel <span class="pull-right">{{utilisateur.agent.email}}</span></a></li>
+                    <li><a>Adresse(1) <span class="pull-right">{{utilisateur.agent.adresse1}}</span></a></li>
+                    <li><a>Adresse(2) <span class="pull-right">{{utilisateur.agent.adresse2}}</span></a></li>
+                    <li><a>Ville <span class="pull-right">{{utilisateur.agent.entite.ville}}</span></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="box box-info">
+            <div class="box-header with-border">
+              <h3 class="box-title">Solde(en jour) des congés à la date du {{soldeConge.dateDernierCalcul|date:'dd/MM/yyyy'}}</h3>
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+              </div>
+            </div>
+            <div class="box-body">
+              <div class="col-md-6">
+                <div class="box-footer no-padding">
+                  <ul class="nav nav-stacked">
+                    <li><a>Total congès acquis <span class="pull-right">{{soldeConge.nbCongesAcquis}}</span></a></li>
+                    <li><a>Total congès pris <span class="pull-right">{{soldeConge.nbJourPris}}</span></a></li>
+                    <li><a>Reliquat des congès <span class="pull-right">{{soldeConge.nbCongesReliquat}}</span></a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="box-footer no-padding">
+                  <ul class="nav nav-stacked">
+                    <li><a>Congès échus <span class="pull-right">{{soldeConge.nbCongesEchus}}</span></a></li>
+                    <li><a>Congès en cours <span class="pull-right">{{soldeConge.nbCongesEncours}}</span></a></li>
+                    <li><a>Congès supplémentaires <span class="pull-right">{{soldeConge.nbCongesSupplementaire}}</span></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

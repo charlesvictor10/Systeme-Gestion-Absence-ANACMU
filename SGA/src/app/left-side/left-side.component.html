@@ -1,0 +1,115 @@
+<!-- Left side column. contains the logo and sidebar -->
+<aside class="main-sidebar">
+  <!-- sidebar: style can be found in sidebar.less -->
+  <section class="sidebar">
+    <!-- search form -->
+    <form action="#" method="get" class="sidebar-form">
+      <div class="input-group">
+        <input type="text" name="q" class="form-control" placeholder="Search...">
+        <span class="input-group-btn">
+          <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+          </button>
+        </span>
+      </div>
+    </form>
+    <!-- /.search form -->
+    <!-- sidebar menu: : style can be found in sidebar.less -->
+    <ul class="sidebar-menu" data-widget="tree">
+      <li class="header">MAIN NAVIGATION</li>
+      <li class="treeview">
+        <a routerLink="/">
+          <i class="fa fa-dashboard"></i>
+          <span>Planning des congés</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+      </li>
+      <li class="treeview">
+        <a href="#">
+          <i class="fa fa-fw fa-wrench"></i>
+          <span>Paramétrage</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a routerLink="/agents"><i class="fa fa-user"></i> Personnel</a></li>
+          <li><a routerLink="/jourFeries"><i class="fa fa-calendar-check-o"></i> Jour Fériés</a></li>
+          <li><a routerLink="/congeNonDeductible"><i class="fa fa-calendar-minus-o"></i> Congés non déductibles</a></li>
+        </ul>
+      </li>
+      <li class="treeview">
+        <a href="#">
+          <i class="fa fa-fw fa-file-powerpoint-o"></i>
+          <span>Fiche Personnelle</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a routerLink="/personnelles"><i class="fa fa-database"></i> Données personnelles</a></li>
+          <li><a routerLink="/historiques"><i class="fa fa-archive"></i> Historique des absences</a></li>
+        </ul>
+      </li>
+      <li class="treeview">
+        <a href="#">
+          <i class="fa fa-hand-o-right"></i>
+          <span>Demandes</span>
+          <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a routerLink="/demandeParService"><i class="fa fa-handshake-o"></i> Les demandes du service</a></li>
+          <li *ngIf="authService.isSH()"><a routerLink="/demandeSH"><i class="fa fa-check"></i> Demandes à valider SH</a></li>
+          <li *ngIf="authService.isRH() || authService.isDG() || authService.isSH()"><a routerLink="/demandeRH"><i class="fa fa-check"></i> Demandes à valider</a></li>
+          <li *ngIf="authService.isRH()"><a routerLink="/demandeVD"><i class="fa fa-check"></i> Demandes à valider définitivement</a></li>
+          <li *ngIf="authService.isRH() || authService.isDG()"><a routerLink="/demandeTraitees"><i class="fa fa-fw fa-legal"></i> Demandes traitées</a></li>
+        </ul>
+      </li>
+      <li class="treeview" *ngIf="authService.isRH() || authService.isDG() || authService.isSH()">
+        <a href="#">
+          <i class="fa fa-edit"></i> <span>Etats</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a routerLink="/etatAbsencesAgents"><i class="fa fa-fw fa-balance-scale"></i> Etat des absences des agents</a></li>
+          <li><a routerLink="/soldeConge"><i class="fa fa-fw fa-calculator"></i> Solde des congés</a></li>
+        </ul>
+      </li>
+      <li class="header">LABELS</li>
+      <li class="treeview" *ngIf="authService.isAdmin()">
+        <a href="#">
+          <i class="fa fa-fw fa-users"></i>
+          <span>Gestion des utilisateurs</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a routerLink="/addUtilisateur"><i class="fa fa-user-plus"></i> Nouveau Utilisateur</a></li>
+          <li><a routerLink="/addUserRole"><i class="fa fa-user-secret"></i> Utilisateur Rôle</a></li>
+          <li><a routerLink="/utilisateur"><i class="fa fa-users"></i> Liste des utilisateurs</a></li>
+        </ul>
+      </li>
+      <li class="treeview" *ngIf="authService.isAdmin()">
+        <a href="#">
+          <i class="fa fa-fw fa-cogs"></i>
+          <span>Gestion des rôles</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a routerLink="/addRole"><i class="fa fa-cog"></i> Nouveau rôle</a></li>
+          <li><a routerLink="/role"><i class="fa fa-cogs"></i> Liste des rôles</a></li>
+        </ul>
+      </li>
+      <li><a routerLink="/guideUtilisateur"><i class="fa fa-book text-red"></i> <span>Guide utilisateur</span></a></li>
+    </ul>
+  </section>
+  <!-- /.sidebar -->
+</aside>

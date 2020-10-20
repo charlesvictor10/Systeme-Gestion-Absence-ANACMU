@@ -1,0 +1,120 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+    Page de modification d'une absence
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
+    <li><a href="#">Demandes</a></li>
+    <li class="active">Demandes de permissions</li>
+  </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+  <div class="box box-default">
+    <div class="box-header with-border">
+      <h3 class="box-title">Modification d'une absence</h3>
+      <div class="box-tools pull-right">
+        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+      </div>
+    </div>
+
+    <!-- /.box-header -->
+    <div class="box-body">
+      <form #f="ngForm" (ngSubmit)="updateAbsence(f.value)">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="box-body">
+              <div class="form-group">
+                <label>Agent</label>
+                <select *ngIf="agents" class="form-control select2" style="width: 100%;" name="agent" [(ngModel)]="currentAgent">
+                  <option *ngFor="let agent of agents; let i = index" [ngValue]="agents[i]">
+                    {{agent.prenom}} {{agent.nom}}
+                  </option>
+                </select>
+              </div>
+              <div class="form-group" *ngIf="demande.absence.congesNonDeductible">
+                <label>Motif</label>
+                <select class="form-control select2" style="width: 100%;" name="congesNonDeductible" [(ngModel)]="currentCongesNonDeductible">
+                  <option *ngFor="let congesNonDeductible of congesNonDeductibles; let i = index" [ngValue]="congesNonDeductibles[i]">
+                    {{congesNonDeductible.lib}}
+                  </option>
+                </select>
+              </div>
+              <div class="form-group" *ngIf="demande.absence.motif">
+                <label>Motif</label>
+                <input type="text" class="form-control" name="motif" [(ngModel)]="demande.absence.motif">
+              </div>
+              <div class="form-group">
+                <label>Date de début</label>
+                <div class="input-group date">
+                  <div class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                  </div>
+                  <input type="Date" class="form-control pull-right" name="dateDebutAbsence" [(ngModel)]="demande.absence.dateDebutAbsence">
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Date de fin</label>
+                <div class="input-group date">
+                  <div class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                  </div>
+                  <input type="Date" class="form-control pull-right" name="dateFinAbsence" [(ngModel)]="demande.absence.dateFinAbsence">
+                </div>
+              </div>
+              <div class="form-group">
+                <input class="form-control" type="text" name="id" [(ngModel)]="demande.id">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="box-body">
+              <div class="form-group">
+                <label>Nb. jour absence</label>
+                <input class="form-control" type="number" name="nbJourAbsence" [(ngModel)]="demande.absence.nbJourAbsence">
+              </div>
+              <div class="form-group">
+                <label>Nb. jour non déductible</label>
+                <input class="form-control" type="number" name="nbJourNonDeductible" [(ngModel)]="demande.absence.nbJourNonDeductible">
+              </div>
+              <div class="form-group">
+                <label>Nb. jour ouvrable</label>
+                <input class="form-control" type="number" name="nbJourOuvrable" [(ngModel)]="demande.absence.nbJourOuvrable">
+              </div>
+              <div class="form-group">
+                <label>Etat</label>
+                <input type="text" class="form-control" name="etatDemande" [(ngModel)]="demande.etatDemande">
+              </div>
+              <div class="form-group">
+                <select class="form-control" style="width: 100%;" name="typeAbsence" [(ngModel)]="currentType">
+                  <option *ngFor="let typeAbsence of typeAbsences; let i = index" [ngValue]="typeAbsences[i]">
+                    {{typeAbsence.lib}}
+                  </option>
+                </select>
+              </div>
+              <div class="form-group">
+                <input class="form-control" type="text" name="absence" [(ngModel)]="demande.absence.id">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="box-footer">
+          <button type="submit" class="btn btn-primary">Enregistrer</button>
+          <button type="reset" class="btn btn-danger pull-right">Annuler</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,72 @@
+<section class="content-header">
+  <h1>
+    Page d'affichage de la solde des congés
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
+    <li><a href="#">Etats</a></li>
+    <li class="active">Solde des congés</li>
+  </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box">
+        <div class="box-header">
+          <h3 class="box-title">Solde des congés</h3>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <div *ngIf="succesMessage" class="alert alert-success">{{succesMessage}}</div>
+          <div *ngIf="errorMessage" class="alert alert-danger">{{errorMessage}}</div>
+          <table id="example1" class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th>Mat.</th>
+                <th>Agent</th>
+                <th>Genre</th>
+                <th>Serv.</th>
+                <th>Fonct.</th>
+                <th>Début</th>
+                <th>Acq.</th>
+                <th>Pris</th>
+                <th>Reliq.</th>
+                <th>Ech.</th>
+                <th>Crs</th>
+                <th>Sup.</th>
+                <th>Act.</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let solde of soldeConges">
+                <td>{{solde.agent.matricule}}</td>
+                <td>{{solde.agent.prenom}} {{solde.agent.nom}}</td>
+                <td>{{solde.agent.genre}}</td>
+                <td>{{solde.agent.service.code}}</td>
+                <td>{{solde.agent.fonction.code}}</td>
+                <td>{{solde.agent.datePriseFonction|date:'dd/MM/yyyy'}}</td>
+                <td>{{solde.nbCongesAcquis}}</td>
+                <td>{{solde.nbJourPris}}</td>
+                <td>{{solde.nbCongesReliquat}}</td>
+                <td>{{solde.nbCongesEchus}}</td>
+                <td>{{solde.nbCongesEncours}}</td>
+                <td>{{solde.nbCongesSupplementaire}}</td>
+                <td>
+                  <a (click)="info(solde.id)" class="clickable"><span class="glyphicon glyphicon-info-sign"></span></a>
+                  <a *ngIf="authService.isRH()" (click)="modifier(solde.id)" class="clickable" style="margin-left: 3px;"><span class="glyphicon glyphicon-pencil"></span></a>
+                  <a *ngIf="authService.isRH()" (click)="ajouter(solde.id)" class="clickable" style="margin-left: 3px;"><span class="glyphicon glyphicon-plus"></span></a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="box-footer" *ngIf="authService.isRH() || authService.isDG()">
+          <button (click)="exportExcel()" class="btn btn-primary fa fa-file-excel-o"> Exporter</button>
+          <button (click)="calculSolde()" class="btn btn-primary pull-right fa fa-calculator"> Calculer solde</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,49 @@
+<section class="content-header">
+  <h1>
+    Page d'affichage des utilisateurs inscrits
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
+    <li><a href="#"> Gestion des utilisateurs</a></li>
+    <li class="active"> Liste des utilisateurs</li>
+  </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box">
+        <div class="box-header">
+          <h3 class="box-title">La liste des utilisateurs</h3>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <table id="example1" class="table table-bordered table-striped">
+            <thead>
+            <tr>
+              <th>Email</th>
+              <th>Active</th>
+              <th>Provider</th>
+              <th>Raison blocage</th>
+              <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let utilisateur of utilisateurs">
+              <td>{{utilisateur.email}}</td>
+              <td>{{utilisateur.actived}}</td>
+              <td>{{utilisateur.provider}}</td>
+              <td>{{utilisateur.raisonBlocage}}</td>
+              <td>
+                <a (click)="edit(utilisateur.id)" class="clickable"><span class="glyphicon glyphicon-edit"></span></a>
+                <a (click)="delete(utilisateur.id)" class="clickable" style="color: darkred; margin-left: 10px;"><span class="glyphicon glyphicon-remove-circle"></span></a>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

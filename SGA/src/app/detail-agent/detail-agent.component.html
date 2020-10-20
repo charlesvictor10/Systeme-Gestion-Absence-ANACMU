@@ -1,0 +1,123 @@
+<section class="content-header">
+  <h1>
+    Page d'affichage des informations d'un agent
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
+    <li><a href="#">Paramétrage</a></li>
+    <li class="active">Personnel</li>
+  </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+  <!-- SELECT2 EXAMPLE -->
+  <div class="box box-default">
+    <div class="box-header with-border">
+      <h3 class="box-title">Les informations de l'agent</h3>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+      <div class="row" *ngIf="agent">
+        <div class="col-md-6">
+          <div class="box box-info">
+            <div class="box-header with-border">
+              <h3 class="box-title">Données Personnelles</h3>
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+              </div>
+            </div>
+            <div class="box-body">
+              <div class="box-footer no-padding">
+                <ul class="nav nav-stacked">
+                  <li><a>Titre <span class="pull-right badge bg-aqua">{{agent.civilite.lib}}</span></a></li>
+                  <li><a>Prénom <span class="pull-right badge bg-aqua">{{agent.prenom}}</span></a></li>
+                  <li><a>Prénom <span class="pull-right badge bg-aqua">{{agent.nom}}</span></a></li>
+                  <li><a>Nom de jeune fille <span class="pull-right badge bg-aqua">{{agent.nomJeuneFille}}</span></a></li>
+                  <li><a>Surnom <span class="pull-right badge bg-aqua">{{agent.surnomSigle}}</span></a></li>
+                  <li><a>Statut Marital <span class="pull-right badge bg-aqua">{{agent.statut.lib}}</span></a></li>
+                  <li><a>N° CNI <span class="pull-right badge bg-aqua">{{agent.cni}}</span></a></li>
+                  <li><a>Date de naissance <span class="pull-right badge bg-aqua">{{agent.dateNaissance}}</span></a></li>
+                  <li><a>Lieu de naissance <span class="pull-right badge bg-aqua">{{agent.lieuNaissance}}</span></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="box box-info">
+            <div class="box-header with-border">
+              <h3 class="box-title">Données Professionnelles</h3>
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+              </div>
+            </div>
+            <div class="box-body">
+              <div class="box-footer no-padding">
+                <ul class="nav nav-stacked">
+                  <li><a>Date d'entrée en service <span class="pull-right badge bg-aqua">{{agent.datePriseFonction}}</span></a></li>
+                  <li><a>Matricule <span class="pull-right badge bg-aqua">{{agent.matricule}}</span></a></li>
+                  <li><a>Fonction <span class="pull-right badge bg-aqua">{{agent.fonction.lib}}</span></a></li>
+                  <li><a>Bureau <span class="pull-right badge bg-aqua">{{agent.entite.lib}}</span></a></li>
+                  <li><a>Service <span class="pull-right badge bg-aqua">{{agent.service.lib}}</span></a></li>
+                  <li><a>Superviseur <span class="pull-right badge bg-aqua">{{agent.statut.lib}}</span></a></li>
+                  <li><a>N° poste / Fixe bureau <span class="pull-right badge bg-aqua">{{agent.numeroPoste}} / {{agent.telBureau}}</span></a></li>
+                  <li><a>Tel eGov(ADIE) <span class="pull-right badge bg-aqua">{{agent.telProfessionnel}}</span></a></li>
+                  <li><a>Email professionnel <span class="pull-right badge bg-aqua">{{agent.emailProfessionnel}}</span></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="box box-info">
+            <div class="box-header with-border">
+              <h3 class="box-title">Coordonnées Personnelles</h3>
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+              </div>
+            </div>
+            <div class="box-body">
+              <div class="box-footer no-padding">
+                <ul class="nav nav-stacked">
+                  <li><a>Tel personnel <span class="pull-right badge bg-aqua">{{agent.tel1}}</span></a></li>
+                  <li><a>Tel domicile <span class="pull-right badge bg-aqua">{{agent.tel2}}</span></a></li>
+                  <li><a>Email personnel <span class="pull-right badge bg-aqua">{{agent.email}}</span></a></li>
+                  <li><a>Adresse(1) <span class="pull-right badge bg-aqua">{{agent.adresse1}}</span></a></li>
+                  <li><a>Adresse(2) <span class="pull-right badge bg-aqua">{{agent.adresse2}}</span></a></li>
+                  <li><a>Ville <span class="pull-right badge bg-aqua">{{agent.entite.ville}}</span></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="box box-info">
+            <div class="box-header with-border">
+              <h3 class="box-title">Solde(en jour) des congés à la date du {{soldeConge.dateDernierCalcul|date:'dd/MM/yyyy'}}</h3>
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+              </div>
+            </div>
+            <div class="box-body">
+              <div class="box-footer no-padding">
+                <ul class="nav nav-stacked">
+                  <li><a>Total congés acquis <span class="pull-right badge bg-aqua">{{soldeConge.nbCongesAcquis}}</span></a></li>
+                  <li><a>Total congés pris <span class="pull-right badge bg-aqua">{{soldeConge.nbJourPris}}</span></a></li>
+                  <li><a>Reliquat des congés <span class="pull-right badge bg-aqua">{{soldeConge.nbCongesReliquat}}</span></a></li>
+                  <li><a>Congés échus <span class="pull-right badge bg-aqua">{{soldeConge.nbCongesEchus}}</span></a></li>
+                  <li><a>Congés en cours <span class="pull-right badge bg-aqua">{{soldeConge.nbCongesEncours}}</span></a></li>
+                  <li><a>Congés supplémentaires <span class="pull-right badge bg-aqua">{{soldeConge.nbCongesSupplementaire}}</span></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="box-footer">
+        <button type="submit" class="btn btn-primary" (click)="editAgent(agent.id)">Modifier</button>
+        <button type="reset" class="btn btn-danger pull-right" (click)="close()">Annuler</button>
+      </div>
+    </div>
+  </div>
+</section>

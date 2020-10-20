@@ -1,0 +1,99 @@
+<section class="content-header">
+  <h1>
+    Page d'affichage des détails d'une demande traitée
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
+    <li><a href="#">Demandes</a></li>
+    <li class="active">Demandes traitées</li>
+  </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+  <!-- SELECT2 EXAMPLE -->
+  <div class="box box-default">
+    <div class="box-header with-border">
+      <h3 class="box-title">Les informations de la demande traitée</h3>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+      <div class="row" *ngIf="demande">
+        <div class="col-md-12">
+          <div class="box box-info">
+            <div class="box-header with-border">
+              <h3 class="box-title">Demande n°{{demande.id}} du {{demande.dateDemande|date:'dd/MM/yyyy'}}</h3>
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+              </div>
+            </div>
+            <div class="box-body col-md-6">
+              <div class="box-footer no-padding">
+                <ul class="nav nav-stacked">
+                  <li><a>Agent <span class="pull-right badge bg-aqua">{{demande.absence.agent.prenom}} {{demande.absence.agent.nom}}</span></a></li>
+                  <li><a>Type <span class="pull-right badge bg-aqua">{{demande.absence.typeAbsence.lib}}</span></a></li>
+                  <li *ngIf="demande.absence.motif"><a>Motif <span class="pull-right badge bg-aqua">{{demande.absence.motif}}</span></a></li>
+                  <li *ngIf="demande.absence.congesNonDeductible"><a>Motif <span class="pull-right badge bg-aqua">{{demande.absence.congesNonDeductible.lib}}</span></a></li>
+                  <li><a>Dépassement <span class="pull-right badge bg-aqua"></span></a></li>
+                  <li><a>Date début <span class="pull-right badge bg-aqua">{{demande.absence.dateDebutAbsence|date:'dd/MM/yyyy'}}</span></a></li>
+                  <li><a>Date fin <span class="pull-right badge bg-aqua">{{demande.absence.dateFinAbsence|date:'dd/MM/yyyy'}}</span></a></li>
+                  <li><a>Etat <span class="pull-right badge bg-aqua">{{demande.etatDemande}}</span></a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="box-body">
+              <div class="box-footer no-padding">
+                <ul class="nav nav-stacked">
+                  <li><a>Durée d'absence <span class="pull-right badge bg-aqua">{{demande.absence.nbJourAbsence}}</span></a></li>
+                  <li><a>Nb. jour déductible <span class="pull-right badge bg-aqua">{{demande.absence.nbJourDeductible}}</span></a></li>
+                  <li><a>Nb. congés acquis <span class="pull-right badge bg-aqua">{{demande.absence.nbCongesAcquis}}</span></a></li>
+                  <li><a>Nb. jour déjà pris <span class="pull-right badge bg-aqua">{{demande.absence.nbJourDejaPris}}</span></a></li>
+                  <li><a>Nb. congés reliquat <span class="pull-right badge bg-aqua">{{demande.absence.nbCongesReliquat}}</span></a></li>
+                  <li><a>Nb. congés échus <span class="pull-right badge bg-aqua">{{demande.absence.nbCongesEchus}}</span></a></li>
+                  <li><a>Nb. congés en cours <span class="pull-right badge bg-aqua">{{demande.absence.nbCongesEncours}}</span></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="box box-info">
+            <div class="box-header with-border">
+              <h3 class="box-title">Liste des validations</h3>
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+              </div>
+            </div>
+            <div class="box-body">
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                  <tr>
+                    <th>N° demande</th>
+                    <th>Date validation</th>
+                    <th>Note</th>
+                    <th>Validateur</th>
+                    <th>Etat validation</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let validationDemande of validationDemandes">
+                    <td>{{validationDemande.demandePermissionAbsence.id}}</td>
+                    <td>{{validationDemande.dateValidation|date:'dd/MM/yyyy'}}</td>
+                    <td>{{validationDemande.observations}}</td>
+                    <td>{{validationDemande.validateur.prenom}} {{validationDemande.validateur.nom}}</td>
+                    <td>{{validationDemande.etatValidation}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="box-footer">
+        <button type="reset" class="btn btn-danger center-block" (click)="close()">Fermer</button>
+      </div>
+    </div>
+  </div>
+</section>

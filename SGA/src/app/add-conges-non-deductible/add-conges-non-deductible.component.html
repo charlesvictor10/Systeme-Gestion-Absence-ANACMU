@@ -1,0 +1,58 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+    Page d'ajout d'un congé non déductible
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
+    <li><a href="#">Paramétrage</a></li>
+    <li class="active">congés non déductibles</li>
+  </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+  <div class="box box-default">
+    <div class="box-header with-border">
+      <h3 class="box-title">Enregistrement d'un congé</h3>
+
+      <div class="box-tools pull-right">
+        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+      </div>
+    </div>
+
+    <!-- /.box-header -->
+    <div class="box-body">
+      <form #f="ngForm" (ngSubmit)="f.form.valid && onSaveCongesNonDeductible(f.value)" novalidate>
+        <div class="form-group">
+          <label>Libellé</label>
+          <input type="text" class="form-control" name="lib" [(ngModel)]="congesNonDeductible.lib" #lib="ngModel" placeholder="Entrer le libellé" [ngClass]="{ 'is-invalid': f.submitted && lib.invalid }" required/>
+          <div *ngIf="f.submitted && lib.invalid" class="text-danger">
+            <div *ngIf="lib.errors.required">Libellé ne peut pas être vide</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div>Nombre de jour pris</div>
+          <input type="number" class="form-control" name="nbJourConges" [(ngModel)]="congesNonDeductible.nbJourConges" #nbJourConges="ngModel" [ngClass]="{ 'is-invalid': f.submitted && nbJourConges.invalid }" required>
+          <div *ngIf="f.submitted && nbJourConges.invalid" class="text-danger">
+            <div *ngIf="nbJourConges.errors.required">Nombre de jour pris ne peut pas être vide</div>
+          </div>
+        </div>
+        <div class="box-footer">
+          <button type="submit" class="btn btn-primary">Enregistrer</button>
+          <button type="reset" class="btn btn-danger pull-right">Annuler</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
